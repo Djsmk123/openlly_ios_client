@@ -1,50 +1,61 @@
 import SwiftUI
 
 struct SplashView: View {
-    @StateObject
-    private var viewModel = SplashViewModel(repository: SplashRepositoryImpl())
-
-    @State private var navigationPath = NavigationPath()
+    @StateObject private var viewModel = SplashViewModel(repository: SplashRepositoryImpl())
     
-
     var body: some View {
-        NavigationStack(path: $navigationPath) {
-            ZStack {
-                LinearGradient(gradient: Gradient(colors: primaryGradient), startPoint: .topLeading, endPoint: .bottomTrailing)
-                    .edgesIgnoringSafeArea(.all)
-                    .overlay(
-                        Text("Openlly")
-                            .font(.system(size: 50))
-                            .fontWeight(.bold)
-                            .foregroundColor(.white)
-                    )
-            }
-            .task {
-                // Make the asynchronous check for authentication state
-                 viewModel.checkAuth()
-            }.onChange(of: viewModel.authState) { [weak viewModel] _ in
-                            guard let viewModel = viewModel else { return }
-                            switch viewModel.authState {
-                            case .authenticated:
-                                // Clear the stack before appending the "Home" destination
-                                navigationPath = NavigationPath()
-                                navigationPath.append("Home")
-                            case .unauthenticated:
-                                // Clear the stack before appending the "Login" destination
-                                navigationPath = NavigationPath()
-                                navigationPath.append("Login")
-                            }
-                        }
-            .navigationDestination(for: String.self) { destination in
-                switch destination {
-                case "Home":
-                    LoginView() // Navigate to Home view
-                case "Login":
-                    LoginView() // Navigate to Login view
-                default:
-                    EmptyView() // Fallback case
-                }
+        // Remove NavigationStack from here - it should be at a higher level
+        ZStack {
+            LinearGradient(gradient: Gradient(colors: primaryGradient), startPoint: .topLeading, endPoint: .bottomTrailing)
+                .edgesIgnoringSafeArea(.all)
+                .overlay(
+                    Text("Openlly")
+                        .font(.system(size: 50))
+                        .fontWeight(.bold)
+                        .foregroundColor(.white)
+                )
+        }
+        .onAppear {
+            print("SplashView: onAppear, checking auth state")
+            viewModel.checkAuth()
+        }
+        .onChange(of: viewModel.authState) { authState in
+            switch authState {
+            case .authenticated:
+                print("SplashView: navigating to Home")
+                // Replace root view with HomeView
+                replaceRoot(with: HomeView())
+            case .unauthenticated:
+                print("SplashView: navigating to Login")
+                // Replace root view with LoginView
+                replaceRoot(with: LoginView())
+            case .unknown:
+                print("SplashView: initial state")
             }
         }
+    }
+    
+    private func replaceRoot<T: View>(with view: T) {
+        // Get the window scene
+        guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+              let window = windowScene.windows.first
+        else {
+            return
+        }
+        
+        // Create a new navigation controller with the destination view
+        let hostingController = UIHostingController(rootView: NavigationStack {
+            view
+        })
+        
+        // Replace the root view controller
+        window.rootViewController = hostingController
+        
+        // Add animation
+        UIView.transition(with: window,
+                         duration: 0.3,
+                         options: .transitionCrossDissolve,
+                         animations: nil,
+                         completion: nil)
     }
 }

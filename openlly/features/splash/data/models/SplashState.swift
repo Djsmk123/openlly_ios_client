@@ -8,4 +8,5 @@
 enum AuthState {
     case authenticated
     case unauthenticated
+    case unknown
 }

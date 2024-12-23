@@ -14,8 +14,8 @@ protocol SplashRepository {
 
 class SplashRepositoryImpl: SplashRepository {
     func checkAuth() -> AuthState {
-     
-        return .authenticated
-        
+    //check for auth
+        let token = UserDefaults.standard.string(forKey: "auth_token")
+        return token != nil ? .authenticated : .unauthenticated
     }
 }
