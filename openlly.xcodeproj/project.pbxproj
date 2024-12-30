@@ -1,0 +1,633 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1D8421242D227B7E00CEC97B /* FirebaseCore in Frameworks */ = {isa = PBXBuildFile; productRef = 1D8421232D227B7E00CEC97B /* FirebaseCore */; };
+		1D8421262D227B7E00CEC97B /* FirebaseRemoteConfig in Frameworks */ = {isa = PBXBuildFile; productRef = 1D8421252D227B7E00CEC97B /* FirebaseRemoteConfig */; };
+		1DF5D7FB2D1EE52600AF5426 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 1DF5D7FA2D1EE52600AF5426 /* Lottie */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		1D5BC8CA2D14405E00F0F2B5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1D5BC8B12D14405C00F0F2B5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1D5BC8B82D14405C00F0F2B5;
+			remoteInfo = openlly;
+		};
+		1D5BC8D42D14405E00F0F2B5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1D5BC8B12D14405C00F0F2B5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1D5BC8B82D14405C00F0F2B5;
+			remoteInfo = openlly;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		1D5BC8B92D14405C00F0F2B5 /* openlly.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = openlly.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1D5BC8C92D14405E00F0F2B5 /* openllyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = openllyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		1D5BC8D32D14405E00F0F2B5 /* openllyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = openllyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		1D84212B2D227C9F00CEC97B /* Exceptions for "openlly" folder in "openlly" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 1D5BC8B82D14405C00F0F2B5 /* openlly */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		1D5BC8BB2D14405C00F0F2B5 /* openlly */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				1D84212B2D227C9F00CEC97B /* Exceptions for "openlly" folder in "openlly" target */,
+			);
+			path = openlly;
+			sourceTree = "<group>";
+		};
+		1D5BC8CC2D14405E00F0F2B5 /* openllyTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = openllyTests;
+			sourceTree = "<group>";
+		};
+		1D5BC8D62D14405E00F0F2B5 /* openllyUITests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = openllyUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1D5BC8B62D14405C00F0F2B5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1D8421262D227B7E00CEC97B /* FirebaseRemoteConfig in Frameworks */,
+				1D8421242D227B7E00CEC97B /* FirebaseCore in Frameworks */,
+				1DF5D7FB2D1EE52600AF5426 /* Lottie in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1D5BC8C62D14405E00F0F2B5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1D5BC8D02D14405E00F0F2B5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1D5BC8B02D14405C00F0F2B5 = {
+			isa = PBXGroup;
+			children = (
+				1D5BC8BB2D14405C00F0F2B5 /* openlly */,
+				1D5BC8CC2D14405E00F0F2B5 /* openllyTests */,
+				1D5BC8D62D14405E00F0F2B5 /* openllyUITests */,
+				1D5BC8BA2D14405C00F0F2B5 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		1D5BC8BA2D14405C00F0F2B5 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1D5BC8B92D14405C00F0F2B5 /* openlly.app */,
+				1D5BC8C92D14405E00F0F2B5 /* openllyTests.xctest */,
+				1D5BC8D32D14405E00F0F2B5 /* openllyUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1D5BC8B82D14405C00F0F2B5 /* openlly */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1D5BC8DD2D14405E00F0F2B5 /* Build configuration list for PBXNativeTarget "openlly" */;
+			buildPhases = (
+				1D5BC8B52D14405C00F0F2B5 /* Sources */,
+				1D5BC8B62D14405C00F0F2B5 /* Frameworks */,
+				1D5BC8B72D14405C00F0F2B5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				1D5BC8BB2D14405C00F0F2B5 /* openlly */,
+			);
+			name = openlly;
+			packageProductDependencies = (
+				1DF5D7FA2D1EE52600AF5426 /* Lottie */,
+				1D8421232D227B7E00CEC97B /* FirebaseCore */,
+				1D8421252D227B7E00CEC97B /* FirebaseRemoteConfig */,
+			);
+			productName = openlly;
+			productReference = 1D5BC8B92D14405C00F0F2B5 /* openlly.app */;
+			productType = "com.apple.product-type.application";
+		};
+		1D5BC8C82D14405E00F0F2B5 /* openllyTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1D5BC8E02D14405E00F0F2B5 /* Build configuration list for PBXNativeTarget "openllyTests" */;
+			buildPhases = (
+				1D5BC8C52D14405E00F0F2B5 /* Sources */,
+				1D5BC8C62D14405E00F0F2B5 /* Frameworks */,
+				1D5BC8C72D14405E00F0F2B5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				1D5BC8CB2D14405E00F0F2B5 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				1D5BC8CC2D14405E00F0F2B5 /* openllyTests */,
+			);
+			name = openllyTests;
+			packageProductDependencies = (
+			);
+			productName = openllyTests;
+			productReference = 1D5BC8C92D14405E00F0F2B5 /* openllyTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		1D5BC8D22D14405E00F0F2B5 /* openllyUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1D5BC8E32D14405E00F0F2B5 /* Build configuration list for PBXNativeTarget "openllyUITests" */;
+			buildPhases = (
+				1D5BC8CF2D14405E00F0F2B5 /* Sources */,
+				1D5BC8D02D14405E00F0F2B5 /* Frameworks */,
+				1D5BC8D12D14405E00F0F2B5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				1D5BC8D52D14405E00F0F2B5 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				1D5BC8D62D14405E00F0F2B5 /* openllyUITests */,
+			);
+			name = openllyUITests;
+			packageProductDependencies = (
+			);
+			productName = openllyUITests;
+			productReference = 1D5BC8D32D14405E00F0F2B5 /* openllyUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		1D5BC8B12D14405C00F0F2B5 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1600;
+				LastUpgradeCheck = 1600;
+				TargetAttributes = {
+					1D5BC8B82D14405C00F0F2B5 = {
+						CreatedOnToolsVersion = 16.0;
+					};
+					1D5BC8C82D14405E00F0F2B5 = {
+						CreatedOnToolsVersion = 16.0;
+						TestTargetID = 1D5BC8B82D14405C00F0F2B5;
+					};
+					1D5BC8D22D14405E00F0F2B5 = {
+						CreatedOnToolsVersion = 16.0;
+						TestTargetID = 1D5BC8B82D14405C00F0F2B5;
+					};
+				};
+			};
+			buildConfigurationList = 1D5BC8B42D14405C00F0F2B5 /* Build configuration list for PBXProject "openlly" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 1D5BC8B02D14405C00F0F2B5;
+			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				1DF5D7F92D1EE52600AF5426 /* XCRemoteSwiftPackageReference "lottie-ios" */,
+				1D8421222D227B7E00CEC97B /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 1D5BC8BA2D14405C00F0F2B5 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1D5BC8B82D14405C00F0F2B5 /* openlly */,
+				1D5BC8C82D14405E00F0F2B5 /* openllyTests */,
+				1D5BC8D22D14405E00F0F2B5 /* openllyUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1D5BC8B72D14405C00F0F2B5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1D5BC8C72D14405E00F0F2B5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1D5BC8D12D14405E00F0F2B5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1D5BC8B52D14405C00F0F2B5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1D5BC8C52D14405E00F0F2B5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1D5BC8CF2D14405E00F0F2B5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		1D5BC8CB2D14405E00F0F2B5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1D5BC8B82D14405C00F0F2B5 /* openlly */;
+			targetProxy = 1D5BC8CA2D14405E00F0F2B5 /* PBXContainerItemProxy */;
+		};
+		1D5BC8D52D14405E00F0F2B5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1D5BC8B82D14405C00F0F2B5 /* openlly */;
+			targetProxy = 1D5BC8D42D14405E00F0F2B5 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		1D5BC8DB2D14405E00F0F2B5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		1D5BC8DC2D14405E00F0F2B5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		1D5BC8DE2D14405E00F0F2B5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"openlly/Preview Content\"";
+				DEVELOPMENT_TEAM = 6RX79H472N;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = openlly/Info.plist;
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Photo Library Access";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.smkwinner.openlly.openlly;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		1D5BC8DF2D14405E00F0F2B5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"openlly/Preview Content\"";
+				DEVELOPMENT_TEAM = 6RX79H472N;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = openlly/Info.plist;
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Photo Library Access";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.smkwinner.openlly.openlly;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		1D5BC8E12D14405E00F0F2B5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 6RX79H472N;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.smkwinner.openlly.openllyTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/openlly.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/openlly";
+			};
+			name = Debug;
+		};
+		1D5BC8E22D14405E00F0F2B5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 6RX79H472N;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.smkwinner.openlly.openllyTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/openlly.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/openlly";
+			};
+			name = Release;
+		};
+		1D5BC8E42D14405E00F0F2B5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 6RX79H472N;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.smkwinner.openlly.openllyUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = openlly;
+			};
+			name = Debug;
+		};
+		1D5BC8E52D14405E00F0F2B5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 6RX79H472N;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.smkwinner.openlly.openllyUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = openlly;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1D5BC8B42D14405C00F0F2B5 /* Build configuration list for PBXProject "openlly" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1D5BC8DB2D14405E00F0F2B5 /* Debug */,
+				1D5BC8DC2D14405E00F0F2B5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1D5BC8DD2D14405E00F0F2B5 /* Build configuration list for PBXNativeTarget "openlly" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1D5BC8DE2D14405E00F0F2B5 /* Debug */,
+				1D5BC8DF2D14405E00F0F2B5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1D5BC8E02D14405E00F0F2B5 /* Build configuration list for PBXNativeTarget "openllyTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1D5BC8E12D14405E00F0F2B5 /* Debug */,
+				1D5BC8E22D14405E00F0F2B5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1D5BC8E32D14405E00F0F2B5 /* Build configuration list for PBXNativeTarget "openllyUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1D5BC8E42D14405E00F0F2B5 /* Debug */,
+				1D5BC8E52D14405E00F0F2B5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		1D8421222D227B7E00CEC97B /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 11.6.0;
+			};
+		};
+		1DF5D7F92D1EE52600AF5426 /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-ios";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.5.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		1D8421232D227B7E00CEC97B /* FirebaseCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1D8421222D227B7E00CEC97B /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCore;
+		};
+		1D8421252D227B7E00CEC97B /* FirebaseRemoteConfig */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1D8421222D227B7E00CEC97B /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseRemoteConfig;
+		};
+		1DF5D7FA2D1EE52600AF5426 /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1DF5D7F92D1EE52600AF5426 /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			productName = Lottie;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 1D5BC8B12D14405C00F0F2B5 /* Project object */;
+}
