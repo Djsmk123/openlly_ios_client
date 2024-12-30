@@ -82,12 +82,12 @@ class ForYouTabViewModel: ObservableObject {
                     }
 
                     self.page += 1
-                    self.answerError = "" // Clear error on success
 
                     if uniqueAnswers.count < self.perPage {
                         self.hasMoreAnswers = false
                     }
                 case .failure(let error):
+                    Logger.logEvent("Error fetching answers: \(error)")
                     self.answerError = error.localizedDescription
                 }
             }
