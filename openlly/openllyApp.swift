@@ -1,34 +1,45 @@
-//
-//  openllyApp.swift
-//  openlly
-//
-//  Created by Mobin on 19/12/24.
-//
-
 import SwiftUI
-import FirebaseCore
-
-class AppDelegate: NSObject, UIApplicationDelegate {
-    func application(_ application: UIApplication,
-                     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
-        // Ensure Firebase is configured first
-        FirebaseApp.configure()
-
-        return true
-    }
-}
 
 @main
-struct openllyApp: App {
+struct OpenllyApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
-    
-
-  
+    @StateObject private var appState = AppState() // Central app state
 
     var body: some Scene {
         WindowGroup {
-            SplashView().onOpenURL(perform:{result in print("recived url",result)})
+            NavigationStack(path: $appState.navigationPath) {
+                Group {
+                    switch appState.authState {
+                    case .unknown:
+                        SplashView()
+                            .environmentObject(appState)
+                    case .unauthenticated:
+                        LoginView()
+                            .environmentObject(appState)
+                    case .authenticated:
+                        HomeView()
+                            .environmentObject(appState)
+                    case .usernameUnavailable:
+                        AddUsernameView()
+                            .environmentObject(appState)
+                    }
+                }
+                .onOpenURL { url in
+                    appState.handleDeepLink(url)
+                }
+                .navigationDestination(for: Route.self) { route in
+                    switch route {
+                    case .emailVerification:
+                        EmailVerificationView()
+                    case .emailVerificationLink(let token):
+                        EmailVerificationLinkView(token: token)
+                    default:
+                        EmptyView() // No other navigation directly
+                    }
+                }
+            }
         }
-        
     }
 }
+
+

@@ -9,7 +9,7 @@ import SwiftUI
 
 struct LogoutSection: View {
     @Binding var showLogoutConfirmation: Bool
-    
+     @EnvironmentObject var appState: AppState
     var body: some View {
          Button(action: {
                 showLogoutConfirmation.toggle()
@@ -26,7 +26,7 @@ struct LogoutSection: View {
                     // Replace root view with LoginView
                     //auth_token delete from UserDefaults   
                     UserDefaults.standard.removeObject(forKey: "auth_token")
-                    SettingsViewModel().replaceRootWithLoginView()
+                    appState.navigateToUnauthenticatedState()
                 }
                 Button("Cancel", role: .cancel) {
                     

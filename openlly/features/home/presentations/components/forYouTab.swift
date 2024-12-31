@@ -2,9 +2,9 @@ import SwiftUI
 
 struct ForYouTab: View {
     let userAvatarImg: String
-
-    @StateObject private var viewModel : ForYouTabViewModel
     let impactGenerator = UIImpactFeedbackGenerator(style: .light)
+    @StateObject private var viewModel : ForYouTabViewModel
+    
 
     init(userAvatarImg: String) {
         _viewModel = StateObject(wrappedValue: forYouTabViewModel)

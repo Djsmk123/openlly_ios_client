@@ -124,7 +124,7 @@ extension View {
         message: String,
         type: ToastType = .info,
         position: ToastPosition = .bottom,
-        showIcon: Bool = true,
+        showIcon: Bool = false,
         customBackgroundColor: Color? = nil,
         isShowing: Binding<Bool>
     ) -> some View {

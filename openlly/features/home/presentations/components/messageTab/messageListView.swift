@@ -7,7 +7,6 @@ import SwiftUI
 
 struct MessageListView: View {
     let answers: [Answer]
-    let onRefresh: () -> Void
     let onTap: (_ index: Int) -> Void
     let impactGenerator = UIImpactFeedbackGenerator(style: .light)
     
@@ -59,9 +58,7 @@ struct MessageListView: View {
         .listStyle(PlainListStyle())
         .background(Color.white)
         .scrollContentBackground(.hidden)
-        .refreshable {
-            onRefresh()
-        }
+        
     }
 
     // Gradient circle view for avatar

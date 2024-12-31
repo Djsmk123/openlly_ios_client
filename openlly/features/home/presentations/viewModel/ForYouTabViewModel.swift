@@ -53,42 +53,61 @@ class ForYouTabViewModel: ObservableObject {
     }
 
     func getAnswers(forceReload: Bool = false) {
-        if answers.isEmpty || !answerError.isEmpty {
-            answerLoading = true
+        // Start loading if answers are empty or there's an error, but avoid multiple state updates
+        if forceReload || self.answers.isEmpty || !self.answerError.isEmpty {
+            DispatchQueue.main.async {
+                self.answerLoading = true
+            }
         }
-
+        
+        // Reset pagination and data if we are forcing a reload
         if forceReload {
-            self.page = 1
-            self.answers = []
-            self.hasMoreAnswers = true
+            DispatchQueue.main.async {
+                self.page = 1
+                self.answers = []
+                self.hasMoreAnswers = true
+            }
         }
-        if(!hasMoreAnswers){
-            return  
+        
+        // If there's no more data to load, stop loading and return
+        guard hasMoreAnswers else {
+            DispatchQueue.main.async {
+                self.answerLoading = false
+            }
+            return
         }
 
+        // Call the repository to fetch data
         homeRepo.getInbox(page: page, perPage: perPage) { result in
             DispatchQueue.main.async {
                 self.answerLoading = false
                 switch result {
                 case .success(let newAnswers):
+                    // Filter out duplicate answers based on their ID
                     let uniqueAnswers = newAnswers.filter { newAnswer in
                         !self.answers.contains { $0.id == newAnswer.id }
                     }
 
+                    // Update answers depending on the reload flag
                     if forceReload {
                         self.answers = uniqueAnswers
                     } else {
                         self.answers.append(contentsOf: uniqueAnswers)
                     }
 
-                    self.page += 1
-
+                    // Update pagination and check if there are more answers to load
                     if uniqueAnswers.count < self.perPage {
                         self.hasMoreAnswers = false
+                    } else {
+                        self.page += 1
                     }
+
                 case .failure(let error):
+                    // Log error and show error message
                     Logger.logEvent("Error fetching answers: \(error)")
-                    self.answerError = error.localizedDescription
+                    DispatchQueue.main.async {
+                        self.answerError = error.localizedDescription
+                    }
                 }
             }
         }

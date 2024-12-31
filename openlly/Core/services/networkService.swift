@@ -33,7 +33,7 @@ struct VoidResponse: Decodable {
 }
 
 class APIClient {
-    private let baseURL: String
+    private var baseURL: String
     private let session: URLSession
     private let apiVersion: String = "/api/v1"
     private let monitor = NWPathMonitor()
@@ -41,10 +41,12 @@ class APIClient {
     private var remoteService = FirebaseRemoteService.shared
 
     init() {
-        self.baseURL = remoteService.remoteConfigModel?.apiBaseUrl ?? ""
-        
+        self.baseURL = ""
         self.session = URLSession.shared
         startNetworkMonitoring()
+        self.remoteService.fetchAndActivateRemoteConfig {  [weak self] _ in
+            self?.baseURL = self?.remoteService.remoteConfigModel?.apiBaseUrl ?? ""
+        }
     }
 
     private func startNetworkMonitoring() {

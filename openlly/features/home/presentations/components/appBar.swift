@@ -11,6 +11,7 @@ struct HomeAppBar : View {
     let onTabChange : (Int) -> Void
     let impactGenerator = UIImpactFeedbackGenerator(style: .light)
     let unReadMessageCount : Int
+    @EnvironmentObject var appState: AppState
 
     var body: some View {
         HStack {
@@ -51,7 +52,8 @@ struct HomeAppBar : View {
             Spacer()
             
             // Action button on the trailing edge
-            NavigationLink(destination: SettingsView()) {
+            NavigationLink(destination: SettingsView()
+                            .environmentObject(appState)) {
                 Image(systemName: "gear")
                     .resizable()
                     .frame(width: 24, height: 24)
