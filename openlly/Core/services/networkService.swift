@@ -1,6 +1,6 @@
 import Foundation
-import SwiftUI
 import Network
+import SwiftUI
 
 enum RequestType: String {
     case get = "GET"
@@ -16,8 +16,8 @@ enum APIError: Error {
     case decodingError
     case unauthorized
     case tokenExpired
-    case customError(String)  // New custom error cause
-    case noInternetConnection   
+    case customError(String) // New custom error cause
+    case noInternetConnection
 }
 
 struct APIResponse<T: Decodable>: Decodable {
@@ -28,9 +28,8 @@ struct APIResponse<T: Decodable>: Decodable {
     let errorCode: String?
     let tokenExpired: Bool?
 }
-struct VoidResponse: Decodable {
-    
-}
+
+struct VoidResponse: Decodable {}
 
 class APIClient {
     private var baseURL: String
@@ -41,10 +40,10 @@ class APIClient {
     private var remoteService = FirebaseRemoteService.shared
 
     init() {
-        self.baseURL = ""
-        self.session = URLSession.shared
+        baseURL = ""
+        session = URLSession.shared
         startNetworkMonitoring()
-        self.remoteService.fetchAndActivateRemoteConfig {  [weak self] _ in
+        remoteService.fetchAndActivateRemoteConfig { [weak self] _ in
             self?.baseURL = self?.remoteService.remoteConfigModel?.apiBaseUrl ?? ""
         }
     }
@@ -92,7 +91,7 @@ class APIClient {
         var request = URLRequest(url: url)
         request.httpMethod = type.rawValue
         request.allHTTPHeaderFields = [
-            "Authorization": "Bearer \(getBearerToken() ?? "")"
+            "Authorization": "Bearer \(getBearerToken() ?? "")",
         ]
 
         if isMultipart, let formData = formData {

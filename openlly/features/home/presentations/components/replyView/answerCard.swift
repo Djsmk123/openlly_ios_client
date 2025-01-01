@@ -24,7 +24,7 @@ struct AnswerCardView: View {
                         .padding(.top, 5)
                 }
             }
-            
+
             // Content container
             VStack {
                 Text(answer.content)
@@ -37,9 +37,7 @@ struct AnswerCardView: View {
             .frame(maxWidth: .infinity)
             .padding(.horizontal, 20)
             .padding(.bottom, 16)
-            //bottom padding
-
-   
+            // bottom padding
 
             if showBranding {
                 HStack {
@@ -58,9 +56,9 @@ struct AnswerCardView: View {
                         .padding(.top, 8)
                 }
                 .frame(maxWidth: .infinity, alignment: .center) // Center-aligned
-                .padding(.horizontal,12)
+                .padding(.horizontal, 12)
                 .padding(.bottom, 12)
-            } 
+            }
         }
         .background(Color.white)
         .cornerRadius(32)

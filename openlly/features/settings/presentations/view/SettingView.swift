@@ -1,7 +1,5 @@
 import SwiftUI
 
-
-
 struct SettingsView: View {
     @StateObject var viewModel = SettingsViewModel()
     var body: some View {
@@ -9,7 +7,8 @@ struct SettingsView: View {
             List {
                 ProfileSection(onTapProfile: {
                     if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
-                       let viewController = windowScene.windows.first?.rootViewController {
+                       let viewController = windowScene.windows.first?.rootViewController
+                    {
                         viewModel.pickImage(from: viewController)
                     }
                 }, avatarImage: profileViewModel.user?.avatarImage, localImage: viewModel.selectedImageData, isProfileLoading: viewModel.isProfileUploading)
@@ -33,13 +32,11 @@ struct SettingsView: View {
 struct ProfileSection: View {
     let onTapProfile: () -> Void
     let avatarImage: String?
-    let localImage : Data?
-    let isProfileLoading : Bool
-    
-    
-    
+    let localImage: Data?
+    let isProfileLoading: Bool
+
     var body: some View {
-      Section(header: Text("Profile")) {
+        Section(header: Text("Profile")) {
             HStack {
                 if let localImage = localImage {
                     Image(uiImage: UIImage(data: localImage)!)
@@ -83,33 +80,29 @@ struct ProfileSection: View {
                         }
                     }
                 }
-                
+
                 Text(profileViewModel.user?.username ?? "")
                     .font(.body)
             }
             .padding(.vertical, 10)
-            
+
             Button(action: {
                 onTapProfile()
             }) {
                 Text("Update Profile Picture")
                     .font(.body)
             }
-            
         }
     }
 }
+
 struct AccountSection: View {
-    @Binding var showLogoutConfirmation: Bool   
-    @Binding var showDeleteAccountConfirmation: Bool 
+    @Binding var showLogoutConfirmation: Bool
+    @Binding var showDeleteAccountConfirmation: Bool
     var body: some View {
-         Section(header: Text("Account")) {
-            LogoutSection(showLogoutConfirmation: $showLogoutConfirmation)  
+        Section(header: Text("Account")) {
+            LogoutSection(showLogoutConfirmation: $showLogoutConfirmation)
             DeleteAccountSection(showDeleteAccountConfirmation: $showDeleteAccountConfirmation)
         }
     }
 }
-
-
-
-

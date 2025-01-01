@@ -10,25 +10,23 @@ import SwiftUI
 struct MessageTabErrorState: View {
     let onTapRetry: () -> Void
     var body: some View {
+        VStack {
+            Text("Something went wrong")
+                .font(.title3)
+                .fontWeight(.semibold)
+                .foregroundColor(.red)
+                .padding(.bottom, 16)
 
-                           VStack {
-                               Text("Something went wrong")
-                                   .font(.title3)
-                                   .fontWeight(.semibold)
-                                   .foregroundColor(.red)
-                                   .padding(.bottom,16)
-                               
-                               Button(action: onTapRetry) {
-                                   Text("Retry")
-                                       .font(.body)
-                                       .fontWeight(.bold)
-                                       .foregroundColor(.white)
-                                       .padding()
-                                       .background(Color.blue)
-                                       .cornerRadius(8)
-                               }
-                           }
-                           .padding()
+            Button(action: onTapRetry) {
+                Text("Retry")
+                    .font(.body)
+                    .fontWeight(.bold)
+                    .foregroundColor(.white)
+                    .padding()
+                    .background(Color.blue)
+                    .cornerRadius(8)
+            }
+        }
+        .padding()
     }
 }
-

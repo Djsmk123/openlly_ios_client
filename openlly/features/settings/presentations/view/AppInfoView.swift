@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+
 struct InformationSection: View {
     var body: some View {
         Section(header: Text("Information")) {

@@ -16,10 +16,10 @@ struct ButtonView: View {
     var buttonStyle: ButtonStyleType = .filled // Default is filled
     var gradientColors: [Color] = [.blue, .green] // Default gradient colors
     var action: () -> Void
-    
+
     @State private var isButtonPressed = false
     let impactGenerator = UIImpactFeedbackGenerator(style: .light)
-    
+
     var body: some View {
         Button(action: {
             isButtonPressed = true
@@ -29,14 +29,13 @@ struct ButtonView: View {
                 isButtonPressed = false
             }
         }) {
-            HStack
-            {
+            HStack {
                 if let prefixIcon = prefixIcon {
                     prefixIcon
                         .foregroundColor(textColor)
                         .padding(.leading)
                 }
-                
+
                 if isLoading {
                     ProgressView()
                         .progressViewStyle(CircularProgressViewStyle(tint: textColor))
@@ -52,7 +51,7 @@ struct ButtonView: View {
                         .opacity(isLoading ? 0 : 1) // Hide title during loading
                         .animation(.easeInOut(duration: 0.3), value: isLoading)
                 }
-                
+
                 if let suffixIcon = suffixIcon {
                     suffixIcon
                         .foregroundColor(textColor)
@@ -68,7 +67,7 @@ struct ButtonView: View {
         }
         .disabled(isLoading) // Disable button when loading
     }
-    
+
     // Helper function to determine the background based on the button style
     private func background(for style: ButtonStyleType) -> some View {
         switch style {
@@ -87,10 +86,11 @@ struct ButtonView: View {
         }
     }
 }
+
 struct GradientOutlineButton: View {
     var title: String
     var action: () -> Void
-    var gradient : [Color]
+    var gradient: [Color]
 
     var body: some View {
         Button(action: action) {
@@ -119,7 +119,6 @@ struct GradientOutlineButton: View {
     }
 }
 
-
 struct ButtonView_Previews: PreviewProvider {
     static var previews: some View {
         VStack(spacing: 20) {
@@ -131,7 +130,7 @@ struct ButtonView_Previews: PreviewProvider {
                 }
             )
             .frame(height: 50)
-            
+
             ButtonView(
                 title: "Outline Button",
                 isLoading: false,
@@ -141,7 +140,7 @@ struct ButtonView_Previews: PreviewProvider {
                 }
             )
             .frame(height: 50)
-            
+
             ButtonView(
                 title: "Gradient Button",
                 isLoading: false,
@@ -157,4 +156,3 @@ struct ButtonView_Previews: PreviewProvider {
         .previewLayout(.sizeThatFits)
     }
 }
-

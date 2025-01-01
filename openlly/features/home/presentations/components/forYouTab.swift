@@ -3,8 +3,7 @@ import SwiftUI
 struct ForYouTab: View {
     let userAvatarImg: String
     let impactGenerator = UIImpactFeedbackGenerator(style: .light)
-    @StateObject private var viewModel : ForYouTabViewModel
-    
+    @StateObject private var viewModel: ForYouTabViewModel
 
     init(userAvatarImg: String) {
         _viewModel = StateObject(wrappedValue: forYouTabViewModel)
@@ -13,12 +12,10 @@ struct ForYouTab: View {
 
     var body: some View {
         VStack {
-           
-
             if viewModel.loading {
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack(spacing: 16) {
-                        ForEach(0..<5, id: \.self) { _ in
+                        ForEach(0 ..< 5, id: \.self) { _ in
                             QuestionCardSkeleton()
                                 .frame(width: UIScreen.main.bounds.width * 0.8, height: 250)
                         }
@@ -43,11 +40,9 @@ struct ForYouTab: View {
                 }
                 .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
                 .frame(height: 250)
-                .onChange(of: viewModel.currentIndex, initial:true) {
-                    
+                .onChange(of: viewModel.currentIndex, initial: true) {
                     impactGenerator.impactOccurred()
                 }
-
             }
 
             Spacer()
@@ -81,7 +76,7 @@ struct QuestionCardSkeleton: View {
 
 extension View {
     func shimmerAnimation() -> some View {
-        self.modifier(ShimmerModifier())
+        modifier(ShimmerModifier())
     }
 }
 

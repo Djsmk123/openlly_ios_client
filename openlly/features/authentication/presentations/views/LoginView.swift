@@ -2,46 +2,45 @@ import SwiftUI
 
 // View Model for handling email verification logic
 
-
-struct LoginView : View {
+struct LoginView: View {
     @EnvironmentObject var appState: AppState
 
-    var body: some View{
-       Group {
-        if(appState.emailVerificationUrlRecieved != nil) {
-            EmailVerificationLinkView(token: appState.emailVerificationUrlRecieved!)
-        }else {
-            EmailVerificationView()
+    var body: some View {
+        Group {
+            if appState.emailVerificationUrlRecieved != nil {
+                EmailVerificationLinkView(token: appState.emailVerificationUrlRecieved!)
+            } else {
+                EmailVerificationView()
+            }
         }
-       }
     }
 }
 
 struct EmailVerificationView: View {
     @StateObject private var viewModel = EmailVerificationViewModel()
-    @FocusState private var isEmailFocused: Bool    
+    @FocusState private var isEmailFocused: Bool
     var body: some View {
         ZStack {
             // Background gradient
             LinearGradient(gradient: Gradient(colors: primaryGradient),
-                          startPoint: .topLeading,
-                          endPoint: .bottomTrailing)
+                           startPoint: .topLeading,
+                           endPoint: .bottomTrailing)
                 .ignoresSafeArea()
                 .onTapGesture {
                     isEmailFocused = false
                 }
-            
+
             VStack(spacing: 16) {
                 Spacer().frame(height: 50)
-                
+
                 if !viewModel.isMagicLinkSent {
                     welcomeSection
                 } else {
                     verificationSection
                 }
-                
+
                 Spacer()
-                
+
                 if !viewModel.isMagicLinkSent {
                     actionButton
                     termsSection
@@ -52,26 +51,25 @@ struct EmailVerificationView: View {
         }
         .toast(message: viewModel.toastMessage,
                type: viewModel.toastStyle,
-               isShowing: $viewModel.showToast
-        )
-
+               isShowing: $viewModel.showToast)
     }
+
     // Welcome section with title and subtitle
     private var welcomeSection: some View {
         VStack(spacing: 40) {
             Text("Welcome to Openlly")
                 .font(.system(size: 36, weight: .bold))
                 .foregroundColor(.white)
-            
+
             Text("Enter your email to receive a magic link and log in.")
                 .font(.body)
                 .foregroundColor(.white.opacity(0.8))
-            
+
             emailField
         }
         .transition(.opacity)
     }
-    
+
     // Email input field
     private var emailField: some View {
         TextField("Email", text: $viewModel.email)
@@ -84,7 +82,7 @@ struct EmailVerificationView: View {
             .autocapitalization(.none)
             .keyboardType(.emailAddress)
     }
-    
+
     // Verification message and controls
     private var verificationSection: some View {
         VStack(spacing: 10) {
@@ -96,13 +94,13 @@ struct EmailVerificationView: View {
                 .background(Color.black.opacity(0.6))
                 .cornerRadius(12)
             Spacer()
-            
+
             if viewModel.countdown > 0 {
                 Text("You can resend the magic link in \(viewModel.countdown) seconds.")
                     .font(.body)
                     .foregroundColor(.white)
             }
-            
+
             if viewModel.canResend {
                 Button("Resend Link") {
                     viewModel.resendMagicLink()
@@ -111,8 +109,7 @@ struct EmailVerificationView: View {
                 .foregroundColor(.white)
                 .underline()
             }
-            
-            
+
             Button("Edit Email") {
                 viewModel.resetState()
             }
@@ -122,7 +119,7 @@ struct EmailVerificationView: View {
         }
         .transition(.opacity)
     }
-    
+
     // Main action button
     private var actionButton: some View {
         Button(action: {
@@ -134,7 +131,7 @@ struct EmailVerificationView: View {
                     .font(.body.weight(.semibold))
                     .foregroundColor(.black)
                     .opacity(viewModel.isLoading ? 0 : 1)
-                
+
                 if viewModel.isLoading {
                     ProgressView()
                         .progressViewStyle(CircularProgressViewStyle(tint: .black))
@@ -144,21 +141,21 @@ struct EmailVerificationView: View {
             .padding()
             .background(
                 viewModel.email.isEmpty ?
-                Color.white.opacity(0.4) :
-                Color.white
+                    Color.white.opacity(0.4) :
+                    Color.white
             )
             .cornerRadius(99)
         }
         .disabled(viewModel.email.isEmpty || viewModel.isLoading)
     }
-    
+
     // Terms and conditions section
     private var termsSection: some View {
         VStack(spacing: 4) {
             Text("By getting started, you accept our")
                 .font(.caption)
                 .foregroundColor(.white.opacity(0.8))
-            
+
             HStack(spacing: 2) {
                 Button("Terms & Conditions") {
                     // Handle terms action
@@ -166,11 +163,11 @@ struct EmailVerificationView: View {
                 .font(.caption.weight(.bold))
                 .foregroundColor(.white)
                 .underline()
-                
+
                 Text("and")
                     .font(.caption)
                     .foregroundColor(.white.opacity(0.8))
-                
+
                 Button("Privacy Policy") {
                     // Handle privacy action
                 }
@@ -181,7 +178,6 @@ struct EmailVerificationView: View {
         }
     }
 }
-
 
 #Preview {
     LoginView()

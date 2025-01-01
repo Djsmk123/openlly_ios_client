@@ -31,11 +31,11 @@ struct MessageTab: View {
                 else {
                     MessageListView(
                         answers: viewModel.answers,
-                       
+
                         onTap: { index in
                             let answer = viewModel.answers[index]
                             viewModel.markAsSeenOneMessage(answer: answer)
-                            
+
                             // Present a detail or reply view
                             viewModel.presentReplyView(for: answer)
                         }

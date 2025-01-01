@@ -5,7 +5,6 @@ struct AddUsernameView: View {
     @FocusState private var isUsernameFocused: Bool // Focus state for username field
     @EnvironmentObject var appState: AppState
 
-
     let feedbackGenerator = UIImpactFeedbackGenerator(style: .light)
 
     var body: some View {
@@ -23,7 +22,6 @@ struct AddUsernameView: View {
                 welcomeSection
                 // AI-generated username suggestions as chips
                 suggestionSection
-               
 
                 // Dice button to load more suggestions with subtle scale effect
                 Button(action: {
@@ -57,12 +55,13 @@ struct AddUsernameView: View {
             isShowing: $viewModel.showToast
         )
     }
-    private var suggestionSection : some View{
+
+    private var suggestionSection: some View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack {
                 if viewModel.isLoading {
                     // Skeleton loader for AI suggestions
-                    ForEach(0..<5, id: \.self) { _ in
+                    ForEach(0 ..< 5, id: \.self) { _ in
                         SkeletonView()
                             .transition(.scale)
                     }
@@ -96,62 +95,65 @@ struct AddUsernameView: View {
             }
         }
     }
+
     private var welcomeSection: some View {
-          VStack(spacing: 40) {
-              Text("Welcome to Openlly")
-                  .font(.system(size: 36, weight: .bold))
-                  .foregroundColor(.white)
+        VStack(spacing: 40) {
+            Text("Welcome to Openlly")
+                .font(.system(size: 36, weight: .bold))
+                .foregroundColor(.white)
 
-              Text("Choose your username to proceed.")
-                  .font(.body)
-                  .foregroundColor(.white.opacity(0.8))
+            Text("Choose your username to proceed.")
+                .font(.body)
+                .foregroundColor(.white.opacity(0.8))
 
-              usernameField
-          }
-          .transition(.opacity)
-      }
+            usernameField
+        }
+        .transition(.opacity)
+    }
+
     // Username input field
-       private var usernameField: some View {
-           TextField("Enter your username", text: $viewModel.username)
-               .textFieldStyle(PlainTextFieldStyle())
-               .padding()
-               .background(Color.white.opacity(0.2))
-               .cornerRadius(12)
-               .foregroundColor(.white)
-               .focused($isUsernameFocused)
-               .autocapitalization(.none)
-               .keyboardType(.default)
-       }
+    private var usernameField: some View {
+        TextField("Enter your username", text: $viewModel.username)
+            .textFieldStyle(PlainTextFieldStyle())
+            .padding()
+            .background(Color.white.opacity(0.2))
+            .cornerRadius(12)
+            .foregroundColor(.white)
+            .focused($isUsernameFocused)
+            .autocapitalization(.none)
+            .keyboardType(.default)
+    }
+
     // Main action button to submit username
-       private var actionButton: some View {
-           Button(action: {
-               guard !viewModel.username.isEmpty else { return }
-               viewModel.submitUsername(onSuccess: {
-                   appState.navigateToAuthenticatedState()
-               })
-           }) {
-               ZStack {
-                   Text("Submit Username")
-                       .font(.body.weight(.semibold))
-                       .foregroundColor(.black)
-                       .opacity(viewModel.isLoading ? 0 : 1)
-                   
-                   if viewModel.isLoading {
-                       ProgressView()
-                           .progressViewStyle(CircularProgressViewStyle(tint: .black))
-                   }
-               }
-               .frame(maxWidth: .infinity)
-               .padding()
-               .background(
-                   viewModel.username.isEmpty ?
-                   Color.white.opacity(0.4) :
-                   Color.white
-               )
-               .cornerRadius(99)
-           }
-           .disabled(viewModel.username.isEmpty || viewModel.isLoading)
-       }
+    private var actionButton: some View {
+        Button(action: {
+            guard !viewModel.username.isEmpty else { return }
+            viewModel.submitUsername(onSuccess: {
+                appState.navigateToAuthenticatedState()
+            })
+        }) {
+            ZStack {
+                Text("Submit Username")
+                    .font(.body.weight(.semibold))
+                    .foregroundColor(.black)
+                    .opacity(viewModel.isLoading ? 0 : 1)
+
+                if viewModel.isLoading {
+                    ProgressView()
+                        .progressViewStyle(CircularProgressViewStyle(tint: .black))
+                }
+            }
+            .frame(maxWidth: .infinity)
+            .padding()
+            .background(
+                viewModel.username.isEmpty ?
+                    Color.white.opacity(0.4) :
+                    Color.white
+            )
+            .cornerRadius(99)
+        }
+        .disabled(viewModel.username.isEmpty || viewModel.isLoading)
+    }
 }
 
 // Skeleton Loader View with shimmer effect
@@ -160,14 +162,14 @@ struct SkeletonView: View {
         RoundedRectangle(cornerRadius: 12)
             .fill(Color.white.opacity(0.6))
             .frame(width: 120, height: 40)
-            .shimmering()  // You can create a shimmer effect for the skeleton loader here
+            .shimmering() // You can create a shimmer effect for the skeleton loader here
     }
 }
 
 extension View {
     // Shimmer effect for skeleton loader
     func shimmering() -> some View {
-        self.overlay(
+        overlay(
             LinearGradient(gradient: Gradient(colors: [Color.white.opacity(0.4), Color.white.opacity(0.2), Color.white.opacity(0.4)]), startPoint: .topLeading, endPoint: .bottomTrailing)
                 .rotationEffect(.degrees(70))
                 .animation(.linear(duration: 1.5).repeatForever(autoreverses: false), value: UUID())

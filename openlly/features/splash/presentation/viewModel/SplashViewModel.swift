@@ -1,20 +1,17 @@
 import SwiftUI
 
-
-
 class SplashViewModel: ObservableObject {
     @Published var authState: SplashStates = .unknown
     private var repository: SplashRepository
     private var profileRepo: ProfileRepo
     private var remoteService = FirebaseRemoteService.shared
 
-
     init(repository: SplashRepository) {
         self.repository = repository
-        self.profileRepo = ProfileRepoImpl(networkService: APIClient())
-        self.remoteService.fetchAndActivateRemoteConfig { [weak self] _ in
+        profileRepo = ProfileRepoImpl(networkService: APIClient())
+        remoteService.fetchAndActivateRemoteConfig { [weak self] _ in
             self?.profileRepo = ProfileRepoImpl(networkService: APIClient())
-         }
+        }
     }
 
     func checkAuth() {
@@ -43,10 +40,10 @@ class SplashViewModel: ObservableObject {
             let profile = try await withCheckedThrowingContinuation { continuation in
                 profileRepo.getProfile { result in
                     switch result {
-                    case .success(let user):
-                         profileViewModel.user = user
+                    case let .success(user):
+                        profileViewModel.user = user
                         continuation.resume(returning: user)
-                    case .failure(let error):
+                    case let .failure(error):
                         continuation.resume(throwing: error)
                     }
                 }

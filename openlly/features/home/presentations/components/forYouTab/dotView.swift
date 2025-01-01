@@ -12,7 +12,7 @@ struct PageDots: View {
 
     var body: some View {
         HStack(spacing: 8) {
-            ForEach(0..<count, id: \.self) { index in
+            ForEach(0 ..< count, id: \.self) { index in
                 Circle()
                     .fill(index == activeIndex ? Color.blue : Color.gray)
                     .frame(width: 8, height: 8)

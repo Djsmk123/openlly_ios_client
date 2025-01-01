@@ -16,38 +16,38 @@ class EmailVerificationLinkViewModel: ObservableObject {
         case verified
         case error(String)
     }
-    enum UserStatus{
+
+    enum UserStatus {
         case profileComplete
         case missingUsername
         case unknown
     }
-    
+
     func verifyEmail(tokenString: String) {
         verificationState = .loading
-        //split string ?
+        // split string ?
         let token = tokenString.split(separator: "?")[0]
         let email = tokenString.split(separator: "?")[1].split(separator: "=")[1]
-        if(token.isEmpty || email.isEmpty) {
+        if token.isEmpty || email.isEmpty {
             verificationState = .error("Invalid link, please check your email.")
             return
         }
         authRepo.validateEmailVerification(email: String(email), token: String(token), completion: { result in
-           DispatchQueue.main.async {
+            DispatchQueue.main.async {
                 switch result {
-            case .success(let user):
-                self.verificationState = .verified
-                profileViewModel.user = user
-                //check if username is not empty or null
+                case let .success(user):
+                    self.verificationState = .verified
+                    profileViewModel.user = user
+                    // check if username is not empty or null
                     self.userStatus = user.username != nil && user.username != "null" ? .profileComplete : .missingUsername
-            case .failure(let error):
-                if case APIError.customError(let message) = error {
-                    self.verificationState = .error(message)
-                } else {
-                    self.verificationState = .error("Link verification failed, please try again")
+                case let .failure(error):
+                    if case let APIError.customError(message) = error {
+                        self.verificationState = .error(message)
+                    } else {
+                        self.verificationState = .error("Link verification failed, please try again")
+                    }
                 }
             }
-           }
         })
-
     }
 }

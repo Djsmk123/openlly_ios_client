@@ -5,7 +5,6 @@
 //  Created by Mobin on 25/12/24.
 //
 
-
 import SwiftUI
 
 import SwiftUI
@@ -32,7 +31,7 @@ class ForYouTabViewModel: ObservableObject {
     }
 
     init() {
-        self.homeRepo = HomeRepoImpl(networkService: networkService)
+        homeRepo = HomeRepoImpl(networkService: networkService)
     }
 
     func getQuestions() {
@@ -43,9 +42,9 @@ class ForYouTabViewModel: ObservableObject {
             DispatchQueue.main.async {
                 self.loading = false
                 switch result {
-                case .success(let questions):
+                case let .success(questions):
                     self.questions = questions
-                case .failure(let error):
+                case let .failure(error):
                     self.error = error.localizedDescription
                 }
             }
@@ -54,12 +53,12 @@ class ForYouTabViewModel: ObservableObject {
 
     func getAnswers(forceReload: Bool = false) {
         // Start loading if answers are empty or there's an error, but avoid multiple state updates
-        if forceReload || self.answers.isEmpty || !self.answerError.isEmpty {
+        if forceReload || answers.isEmpty || !answerError.isEmpty {
             DispatchQueue.main.async {
                 self.answerLoading = true
             }
         }
-        
+
         // Reset pagination and data if we are forcing a reload
         if forceReload {
             DispatchQueue.main.async {
@@ -68,7 +67,7 @@ class ForYouTabViewModel: ObservableObject {
                 self.hasMoreAnswers = true
             }
         }
-        
+
         // If there's no more data to load, stop loading and return
         guard hasMoreAnswers else {
             DispatchQueue.main.async {
@@ -82,7 +81,7 @@ class ForYouTabViewModel: ObservableObject {
             DispatchQueue.main.async {
                 self.answerLoading = false
                 switch result {
-                case .success(let newAnswers):
+                case let .success(newAnswers):
                     // Filter out duplicate answers based on their ID
                     let uniqueAnswers = newAnswers.filter { newAnswer in
                         !self.answers.contains { $0.id == newAnswer.id }
@@ -102,7 +101,7 @@ class ForYouTabViewModel: ObservableObject {
                         self.page += 1
                     }
 
-                case .failure(let error):
+                case let .failure(error):
                     // Log error and show error message
                     Logger.logEvent("Error fetching answers: \(error)")
                     DispatchQueue.main.async {
@@ -121,7 +120,7 @@ class ForYouTabViewModel: ObservableObject {
                 switch result {
                 case .success:
                     print("Message marked as seen")
-                case .failure(let error):
+                case let .failure(error):
                     print("Error marking message as seen: \(error)")
                 }
             }
@@ -134,23 +133,21 @@ class ForYouTabViewModel: ObservableObject {
             }
         }
     }
+
     func presentReplyView(for answer: Answer) {
-    // Retrieve the root view controller to present the sheet
-    if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
-       let rootController = windowScene.windows.first?.rootViewController {
-        let replyViewController = UIHostingController(rootView: MessageReplyView(answer: answer,onDismiss: {
-            //dismiss
-            rootController.dismiss(animated: true, completion: nil)
-        }))
-        replyViewController.modalPresentationStyle = .fullScreen
-        replyViewController.view.backgroundColor = .white
-        rootController.present(replyViewController, animated: true, completion: nil)
+        // Retrieve the root view controller to present the sheet
+        if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+           let rootController = windowScene.windows.first?.rootViewController
+        {
+            let replyViewController = UIHostingController(rootView: MessageReplyView(answer: answer, onDismiss: {
+                // dismiss
+                rootController.dismiss(animated: true, completion: nil)
+            }))
+            replyViewController.modalPresentationStyle = .fullScreen
+            replyViewController.view.backgroundColor = .white
+            rootController.present(replyViewController, animated: true, completion: nil)
+        }
     }
 }
-
-    
-}
-
-
 
 let forYouTabViewModel = ForYouTabViewModel()

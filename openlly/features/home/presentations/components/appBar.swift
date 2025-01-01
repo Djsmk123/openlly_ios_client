@@ -6,18 +6,18 @@
 //
 import SwiftUI
 
-struct HomeAppBar : View {
-    let currentTab : Int
-    let onTabChange : (Int) -> Void
+struct HomeAppBar: View {
+    let currentTab: Int
+    let onTabChange: (Int) -> Void
     let impactGenerator = UIImpactFeedbackGenerator(style: .light)
-    let unReadMessageCount : Int
+    let unReadMessageCount: Int
     @EnvironmentObject var appState: AppState
 
     var body: some View {
         HStack {
             // Spacer to push the tabs into the center
             Spacer()
-            
+
             // Center-aligned tabs
             HStack(spacing: 20) {
                 Button(action: {
@@ -30,13 +30,13 @@ struct HomeAppBar : View {
                             .bold(currentTab == 0)
                     }
                 }
-                
+
                 Button(action: {
                     impactGenerator.impactOccurred()
                     onTabChange(1)
                 }) {
                     HStack {
-                        if  unReadMessageCount > 0 {
+                        if unReadMessageCount > 0 {
                             Circle()
                                 .fill(Color.red)
                                 .frame(width: 10, height: 10)
@@ -47,13 +47,14 @@ struct HomeAppBar : View {
                     }
                 }
             }
-            
+
             // Spacer to push the gear icon to the trailing edge
             Spacer()
-            
+
             // Action button on the trailing edge
             NavigationLink(destination: SettingsView()
-                            .environmentObject(appState)) {
+                .environmentObject(appState))
+            {
                 Image(systemName: "gear")
                     .resizable()
                     .frame(width: 24, height: 24)
@@ -67,6 +68,5 @@ struct HomeAppBar : View {
         }
         .padding(.top)
         .background(Color.white)
-
     }
 }

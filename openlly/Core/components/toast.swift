@@ -13,7 +13,7 @@ enum ToastType {
     case error
     case info
     case warning
-    
+
     var icon: String {
         switch self {
         case .success: return "checkmark.circle.fill"
@@ -22,7 +22,7 @@ enum ToastType {
         case .warning: return "exclamationmark.triangle.fill"
         }
     }
-    
+
     var backgroundColor: Color {
         switch self {
         case .success: return Color.green.opacity(0.9)
@@ -46,7 +46,7 @@ struct Toast: View {
     let showIcon: Bool
     var customBackgroundColor: Color?
     @Binding var isShowing: Bool
-    
+
     // Default parameter initializer
     init(
         message: String,
@@ -61,11 +61,11 @@ struct Toast: View {
         self.position = position
         self.showIcon = showIcon
         self.customBackgroundColor = customBackgroundColor
-        self._isShowing = isShowing
+        _isShowing = isShowing
     }
-    
+
     var body: some View {
-        GeometryReader { geometry in
+        GeometryReader { _ in
             if isShowing {
                 VStack {
                     if position == .top {
@@ -84,7 +84,7 @@ struct Toast: View {
             }
         }
     }
-    
+
     private var toastView: some View {
         HStack(spacing: 12) {
             if showIcon {
@@ -92,13 +92,13 @@ struct Toast: View {
                     .foregroundColor(.white)
                     .font(.system(size: 20, weight: .semibold))
             }
-            
+
             Text(message)
                 .foregroundColor(.white)
                 .font(.system(size: 16, weight: .semibold))
-            
+
             Spacer(minLength: 10)
-            
+
             // Close button
             Button {
                 withAnimation {

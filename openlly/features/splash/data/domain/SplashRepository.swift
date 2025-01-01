@@ -7,15 +7,13 @@
 import Foundation
 
 protocol SplashRepository {
-    //check for auth
+    // check for auth
     func checkAuth() async -> SplashStates
 }
 
-
 class SplashRepositoryImpl: SplashRepository {
-
     func checkAuth() async -> SplashStates {
-    //check for auth
+        // check for auth
         let token = UserDefaults.standard.string(forKey: "auth_token")
         return token != nil ? .authenticated : .unauthenticated
     }

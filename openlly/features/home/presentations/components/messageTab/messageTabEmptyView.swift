@@ -5,10 +5,9 @@
 //  Created by Mobin on 27/12/24.
 //
 
-
 import SwiftUI
 
-struct MessageTabEmptyView : View {
+struct MessageTabEmptyView: View {
     var body: some View {
         // Empty State
         VStack {

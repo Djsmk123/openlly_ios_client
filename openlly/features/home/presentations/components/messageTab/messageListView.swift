@@ -9,11 +9,11 @@ struct MessageListView: View {
     let answers: [Answer]
     let onTap: (_ index: Int) -> Void
     let impactGenerator = UIImpactFeedbackGenerator(style: .light)
-    
+
     var body: some View {
         List(answers.indices, id: \.self) { index in
             let message = answers[index]
-            
+
             HStack {
                 // Leading gradient avatar
                 gradientAvatar(gradientColors: primaryGradient)
@@ -58,7 +58,6 @@ struct MessageListView: View {
         .listStyle(PlainListStyle())
         .background(Color.white)
         .scrollContentBackground(.hidden)
-        
     }
 
     // Gradient circle view for avatar

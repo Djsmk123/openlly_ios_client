@@ -4,8 +4,8 @@
 //
 //  Created by Mobin on 25/12/24.
 //
-import UIKit
 import SwiftUI
+import UIKit
 
 class SettingsViewModel: ObservableObject {
     @Published var selectedImageData: Data?
@@ -16,8 +16,7 @@ class SettingsViewModel: ObservableObject {
     @Published var showLogoutConfirmation = false
     @Published var showDeleteAccountConfirmation = false
 
-
-   private var imagePickerCoordinator: ImagePickerCoordinator?
+    private var imagePickerCoordinator: ImagePickerCoordinator?
 
     func pickImage(from viewController: UIViewController) {
         let coordinator = ImagePickerCoordinator(onImagePicked: { [weak self] imageData in
@@ -26,7 +25,7 @@ class SettingsViewModel: ObservableObject {
         }, onError: { [weak self] errorMessage in
             self?.showErrorToast(message: errorMessage)
         })
-        
+
         imagePickerCoordinator = coordinator
         coordinator.presentImagePicker(on: viewController)
     }
@@ -37,18 +36,18 @@ class SettingsViewModel: ObservableObject {
             return
         }
 
-        self.isProfileUploading = true  
+        isProfileUploading = true
 
         // Simulate an upload process
         print("Uploading profile image...")
-        profileViewModel.uploadProfileImage(image: self.selectedImageData!) { [weak self] result in
+        profileViewModel.uploadProfileImage(image: selectedImageData!) { [weak self] result in
             switch result {
-            case .success(_):
+            case .success:
                 self?.isProfileUploading = false
                 self?.selectedImageData = nil
-                self?.showSuccessToast(message: "Profile image uploaded successfully.") 
+                self?.showSuccessToast(message: "Profile image uploaded successfully.")
                 print("Profile image uploaded successfully.")
-            case .failure(let error):
+            case let .failure(error):
                 self?.showErrorToast(message: error.localizedDescription)
                 self?.isProfileUploading = false
                 print("Profile image upload failed: \(error.localizedDescription)")
@@ -58,30 +57,32 @@ class SettingsViewModel: ObservableObject {
 
     func replaceRootWithLoginView() {
         if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
-           let window = windowScene.windows.first {
+           let window = windowScene.windows.first
+        {
             let loginView = LoginView() // Replace with actual LoginView
             let loginViewController = UIHostingController(rootView: loginView)
             window.rootViewController = loginViewController
         }
     }
-     private func showSuccessToast(message: String) {
-        self.toastMessage = message
-        self.toastType = .success
+
+    private func showSuccessToast(message: String) {
+        toastMessage = message
+        toastType = .success
         withAnimation {
             self.showToast = true
         }
-        self.autoHideToast()
+        autoHideToast()
     }
-    
+
     private func showErrorToast(message: String) {
-        self.toastMessage = message
-        self.toastType = .error
+        toastMessage = message
+        toastType = .error
         withAnimation {
             self.showToast = true
         }
-        self.autoHideToast()
+        autoHideToast()
     }
-    
+
     private func autoHideToast() {
         DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
             withAnimation {
@@ -90,5 +91,3 @@ class SettingsViewModel: ObservableObject {
         }
     }
 }
-
-

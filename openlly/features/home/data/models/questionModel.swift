@@ -27,7 +27,7 @@ struct Question: Codable {
 
 extension Array where Element == String {
     func hexToColor() -> [Color] {
-        return self.compactMap { Color(hexString: $0) }
+        return compactMap { Color(hexString: $0) }
     }
 }
 
@@ -50,7 +50,7 @@ extension Color {
         self.init(
             red: Double(r) / 255,
             green: Double(g) / 255,
-            blue:  Double(b) / 255,
+            blue: Double(b) / 255,
             opacity: Double(a) / 255
         )
     }

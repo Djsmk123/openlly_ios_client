@@ -31,7 +31,7 @@ struct OpenllyApp: App {
                     switch route {
                     case .emailVerification:
                         EmailVerificationView()
-                    case .emailVerificationLink(let token):
+                    case let .emailVerificationLink(token):
                         EmailVerificationLinkView(token: token)
                     default:
                         EmptyView() // No other navigation directly
@@ -41,5 +41,3 @@ struct OpenllyApp: App {
         }
     }
 }
-
-

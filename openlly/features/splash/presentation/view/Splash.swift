@@ -37,14 +37,10 @@ struct SplashView: View {
     }
 }
 
-
-
 enum Route: Hashable {
     case home
     case login
     case addUsername
     case emailVerificationLink(token: String)
     case emailVerification
-
-
 }

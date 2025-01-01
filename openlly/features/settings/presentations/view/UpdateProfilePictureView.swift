@@ -5,10 +5,8 @@
 //  Created by Mobin on 26/12/24.
 //
 
-import SwiftUI
 import PhotosUI
-
-
+import SwiftUI
 
 class ImagePickerCoordinator: NSObject, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     private let onImagePicked: (Data?) -> Void
@@ -29,7 +27,7 @@ class ImagePickerCoordinator: NSObject, UIImagePickerControllerDelegate, UINavig
 
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
         picker.dismiss(animated: true)
-        
+
         guard let selectedImage = info[.editedImage] as? UIImage ?? info[.originalImage] as? UIImage else {
             onError("Failed to process the selected image.")
             return
@@ -43,6 +41,3 @@ class ImagePickerCoordinator: NSObject, UIImagePickerControllerDelegate, UINavig
         picker.dismiss(animated: true)
     }
 }
-
-
-

@@ -1,5 +1,5 @@
-import SwiftUI
 import Lottie
+import SwiftUI
 
 struct LottieView: UIViewRepresentable {
     let animationName: String
@@ -7,10 +7,10 @@ struct LottieView: UIViewRepresentable {
     let height: CGFloat
     let width: CGFloat
 
-    func makeUIView(context: Context) -> UIView {
+    func makeUIView(context _: Context) -> UIView {
         let containerView = UIView(frame: .zero) // A container to manage constraints
         let animationView = LottieAnimationView(name: animationName)
-        
+
         animationView.loopMode = loopMode
         animationView.contentMode = .scaleAspectFit // Ensure the animation scales properly
         animationView.translatesAutoresizingMaskIntoConstraints = false
@@ -22,14 +22,14 @@ struct LottieView: UIViewRepresentable {
             animationView.heightAnchor.constraint(equalToConstant: height),
             animationView.widthAnchor.constraint(equalToConstant: width),
             animationView.centerXAnchor.constraint(equalTo: containerView.centerXAnchor),
-            animationView.centerYAnchor.constraint(equalTo: containerView.centerYAnchor)
+            animationView.centerYAnchor.constraint(equalTo: containerView.centerYAnchor),
         ])
 
         animationView.play()
         return containerView
     }
 
-    func updateUIView(_ uiView: UIView, context: Context) {
+    func updateUIView(_: UIView, context _: Context) {
         // No updates needed for static animations
     }
 }
